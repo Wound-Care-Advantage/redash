@@ -238,6 +238,9 @@ def logout_and_redirect_to_index():
     else:
         index_url = url_for("redash.index", _external=False)
 
+    # WCA Luvo Dashboards
+    index_url = '/dashboards/'
+
     return redirect(index_url)
 
 

@@ -26,6 +26,13 @@ export function stripBase(href) {
   // start with resolved root) - return false. Otherwise
   // strip root and return relative url.
 
+  // WCA Luvo Dashboards
+  // Luvo embedded dashboard, look for the global dashboardId variable set and internally reset the href
+  if (startsWith(href, '/luvo/dashboard.html') && window.dashboardId) {
+    href = `/public/dashboards/${window.dashboardId}`;
+    return href;
+  }
+
   const baseHref = trimEnd(url.normalize(""), "/") + "/";
   href = url.normalize(href);
 

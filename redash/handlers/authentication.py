@@ -90,7 +90,9 @@ def render_token_login_page(template, org_slug, token, invite):
             models.db.session.add(user)
             login_user(user)
             models.db.session.commit()
-            return redirect(url_for("redash.index", org_slug=org_slug))
+            # return redirect(url_for("redash.index", org_slug=org_slug))
+            # WCA Luvo Dashboards
+            return redirect("/dashboards/")
 
     google_auth_url = get_google_auth_url(url_for("redash.index", org_slug=org_slug))
 
@@ -193,6 +195,8 @@ def login(org_slug=None):
         return redirect("/")
 
     index_url = url_for("redash.index", org_slug=org_slug)
+    # WCA Luvo Dashboards
+    index_url = "/dashboards/"
     unsafe_next_path = request.args.get("next", index_url)
     next_path = get_next_path(unsafe_next_path)
     if current_user.is_authenticated:

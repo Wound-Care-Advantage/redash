@@ -45,6 +45,12 @@ export const sessionRefreshInterceptor = createAuthRefreshInterceptor(
 );
 
 axios.interceptors.request.use(config => {
+  // WCA Luvo Dashboards
+  // add /dashboards/ to all requests
+  if (!config.url.startsWith('/dashboards')) {
+    config.url = config.url.startsWith('/') ? `/dashboards${config.url}` : `/dashboards/${config.url}`;
+  }
+
   const apiKey = Auth.getApiKey();
   if (apiKey) {
     config.headers.Authorization = `Key ${apiKey}`;

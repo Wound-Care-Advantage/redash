@@ -133,6 +133,9 @@ def idp_initiated(org_slug=None):
 
     url = url_for("redash.index", org_slug=org_slug)
 
+    # WCA Luvo Dashboards
+    url = "/dashboards/"
+
     return redirect(url)
 
 
