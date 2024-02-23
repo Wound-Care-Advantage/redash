@@ -28,7 +28,7 @@ export function stripBase(href) {
 
   // WCA Luvo Dashboards
   // Luvo embedded dashboard, look for the global dashboardId variable set and internally reset the href
-  if (startsWith(href, '/luvo/dashboard.html') && window.dashboardId) {
+  if (startsWith(href, '/redash/dashboards/') && window.dashboardId) {
     href = `/public/dashboards/${window.dashboardId}`;
     return href;
   }
